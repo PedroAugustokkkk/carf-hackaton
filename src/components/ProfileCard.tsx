@@ -1,4 +1,4 @@
-import { User, Award, TrendingUp } from "lucide-react";
+import { User, Award, TrendingUp, Calendar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -21,32 +21,22 @@ const ProfileCard = () => {
   const handleDiagnosticoClick = async () => {
     const API_URL = "https://unexpected-unvariant-pasquale.ngrok-free.dev/api/sugerir_trilha";
 
-    console.log("🔍 Enviando requisição para:", API_URL);
-
     const loadingToast = toast.loading("🤖 CARF.AI analisando lacunas...", {
       description: `Gerando trilha para ${servidorData.nome} via Agente Gemini.`,
     });
 
-    const payload = {
-      id: servidorData.id,
-      gaps: servidorData.gapsParaIA,
-    };
+    const payload = { id: servidorData.id, gaps: servidorData.gapsParaIA };
 
     try {
       const response = await fetch(API_URL, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error(`Erro HTTP: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
 
       const resultadoIA = await response.json();
-
       toast.dismiss(loadingToast);
 
       const cursoPrincipal =
@@ -74,13 +64,21 @@ const ProfileCard = () => {
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-primary">
             <User className="h-8 w-8 text-white" />
           </div>
+
           <div className="flex-1 space-y-3">
             <div>
               <h3 className="text-lg font-semibold">{servidorData.nome}</h3>
               <p className="text-sm text-muted-foreground">
                 {servidorData.funcao} • {servidorData.unidade}
               </p>
-              <Badge variant="outline" className="mt-1">
+
+              {/* ✅ Data de Nomeação adicionada aqui */}
+              <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+                <Calendar className="h-3 w-3 text-primary" />
+                Nomeada em {servidorData.dataNomeacao}
+              </p>
+
+              <Badge variant="outline" className="mt-2">
                 {servidorData.vinculo}
               </Badge>
             </div>
