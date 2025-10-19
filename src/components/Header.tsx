@@ -10,9 +10,9 @@ const Header = () => {
             <Brain className="h-6 w-6 text-primary-foreground" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground">CARF.AI</h1>
+            <h1 className="text-xl font-bold text-foreground">GIPC.AI</h1>
             <p className="text-xs text-muted-foreground">
-              Gestão de Competências e Produtividade
+              Gestão Inteligente de Pessoas e Competências
             </p>
           </div>
         </div>

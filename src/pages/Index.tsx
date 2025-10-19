@@ -32,7 +32,7 @@ const Index = () => {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <MetricCard
             title="Total de Servidores"
-            value="1.247"
+            value="400"
             icon={<Users className="h-5 w-5" />}
             variant="primary"
           />
@@ -44,13 +44,13 @@ const Index = () => {
           />
           <MetricCard
             title="Lacunas Identificadas"
-            value="342"
+            value="242"
             icon={<AlertTriangle className="h-5 w-5" />}
             trend={{ value: -8, label: "vs. mês anterior" }}
           />
           <MetricCard
             title="Taxa de Engajamento"
-            value="72%"
+            value="50%"
             icon={<TrendingUp className="h-5 w-5" />}
             variant="success"
             trend={{ value: 12, label: "vs. mês anterior" }}
@@ -136,7 +136,7 @@ const Index = () => {
       <footer className="border-t border-border bg-card py-6 mt-12">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>
-            CARF.AI — Assistente de Produtividade e Gestão de Pessoas
+            CGIPC - Gestão Inteligente de Pessoas e Competências
           </p>
           <p className="mt-1">
             Conselho Administrativo de Recursos Fiscais • 2025
