@@ -1,4 +1,4 @@
-import { User, Award, TrendingUp, Calendar, Star } from "lucide-react";
+import { User, Award, TrendingUp, Calendar, Star, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -118,16 +118,29 @@ const ProfileCard = () => {
               ))}
             </div>
 
-            {/* Botão de Diagnóstico */}
-            <Button
-              size="sm"
-              variant="outline"
-              className="w-full sm:w-auto"
-              onClick={handleDiagnosticoClick}
-            >
-              <TrendingUp className="mr-2 h-4 w-4" />
-              Ver diagnóstico de lacunas
-            </Button>
+            {/* Botões de Ação */}
+            <div className="flex flex-wrap gap-2 mt-3">
+              {/* Diagnóstico */}
+              <Button
+                size="sm"
+                variant="outline"
+                className="w-full sm:w-auto"
+                onClick={handleDiagnosticoClick}
+              >
+                <TrendingUp className="mr-2 h-4 w-4" />
+                Ver diagnóstico de lacunas
+              </Button>
+
+              {/* Botão Teams */}
+              <Button
+                size="sm"
+                className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white"
+                onClick={() => window.open("https://teams.microsoft.com", "_blank")}
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Teams
+              </Button>
+            </div>
           </div>
         </div>
       </CardContent>
