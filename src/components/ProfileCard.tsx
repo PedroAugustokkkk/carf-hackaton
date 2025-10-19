@@ -9,6 +9,7 @@ const ProfileCard = () => {
   const servidorData = {
     id: 101,
     nome: "Maria Silva Santos",
+    email: "maria.santos.carf@fazenda.gov.br",
     funcao: "Analista Tributária",
     unidade: "CARF/DF",
     dataNomeacao: "15/03/2018",
