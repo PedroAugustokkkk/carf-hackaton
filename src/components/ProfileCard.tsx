@@ -1,4 +1,4 @@
-import { User, Award, TrendingUp, Calendar } from "lucide-react";
+import { User, Award, TrendingUp, Calendar, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +9,7 @@ const ProfileCard = () => {
   const servidorData = {
     id: 101,
     nome: "Maria Silva Santos",
+    estrelas: 2, // número de estrelas que o servidor possui
     email: "maria.santos.carf@fazenda.gov.br",
     funcao: "Analista Tributária",
     unidade: "CARF/DF",
@@ -68,22 +69,35 @@ const ProfileCard = () => {
 
           <div className="flex-1 space-y-3">
             <div>
-              <h3 className="text-lg font-semibold">{servidorData.nome}</h3>
+              {/* Nome + Estrelas */}
+              <h3 className="text-lg font-semibold flex items-center gap-1">
+                {servidorData.nome}
+                {Array.from({ length: servidorData.estrelas }).map((_, i) => (
+                  <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+                ))}
+              </h3>
+
+              {/* Email */}
+              <p className="text-xs text-muted-foreground">{servidorData.email}</p>
+
+              {/* Função e Unidade */}
               <p className="text-sm text-muted-foreground">
                 {servidorData.funcao} • {servidorData.unidade}
               </p>
 
-              {/* ✅ Data de Nomeação adicionada aqui */}
+              {/* Data de Nomeação */}
               <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
                 <Calendar className="h-3 w-3 text-primary" />
                 Nomeada em {servidorData.dataNomeacao}
               </p>
 
+              {/* Vínculo */}
               <Badge variant="outline" className="mt-2">
                 {servidorData.vinculo}
               </Badge>
             </div>
 
+            {/* Barra de Progresso */}
             <div className="space-y-2">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Competências concluídas</span>
@@ -94,6 +108,7 @@ const ProfileCard = () => {
               <Progress value={servidorData.competenciasConcluidas} className="h-2" />
             </div>
 
+            {/* Competências */}
             <div className="flex flex-wrap gap-2">
               {servidorData.competencias.map((comp) => (
                 <Badge key={comp} variant="secondary" className="flex items-center gap-1">
@@ -103,6 +118,7 @@ const ProfileCard = () => {
               ))}
             </div>
 
+            {/* Botão de Diagnóstico */}
             <Button
               size="sm"
               variant="outline"
